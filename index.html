@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> DragonBallz </title>
+    </head>
+    <body>
+
+        <style type="text/css">
+            #planeta 
+            {
+                background-image: url("img/namek.jpg");
+                width: 900px;
+                height: 700px;
+                background-repeat: no-repeat;
+                background-size: 100% ;
+            }
+            .player {
+                height: 100px;
+                width: 100px;
+                display: inline-block;
+                background-image: url("img/goku.png");
+                background-size: contain;
+                position: absolute;
+                background-repeat: no-repeat;
+            }
+
+            .cell{
+                height: 100px;
+                width: 100px;
+                display: inline-block;
+                background-image: url("img/minicell.png");
+                background-size: contain;
+                position: absolute;
+                left: 800px;
+                top: 250px;
+                background-repeat: no-repeat;
+            }
+            #cuadroDeVidaGoku{
+                height: 60px;
+                width: 250px;
+                display: inline-block;
+                background-image: url("img/cuadrovidagoku.png");
+                background-size: contain;
+                position: absolute;
+                left: 9px;
+                top: 8px;
+                background-repeat: no-repeat;
+            }
+            #barraDeVidaGoku{
+                height: 31px;
+                width: 250px;
+                display: inline-block;
+                background-image: url("img/barravidagoku.png");
+                background-size: contain;
+                position: absolute;
+                left: 24px;
+                top: 6px;
+                background-repeat: no-repeat;
+            }
+            #cuadroDeVidaCell{
+                height: 60px;
+                width: 250px;
+                display: inline-block;
+                background-image: url("img/cuadrovidaminicell.png");
+                background-size: contain;
+                position: absolute;
+                left: 658px;
+                top: 8px;
+                background-repeat: no-repeat;
+            }
+            #barraDeVidaCell{
+                height: 31px;
+                width: 251px;
+                display: inline-block;
+                background-image: url("img/barravidaminicell.png");
+                background-size: contain;
+                position: absolute;
+                left: 6px;
+                top: 5px;
+                background-repeat: no-repeat;
+            }
+        </style>
+        <div id="planeta">
+            <div class="player"></div>
+            <div class="cell"></div>
+            <div id="cuadroDeVidaGoku">
+                <div id="barraDeVidaGoku"></div>
+            </div>
+            <div id="cuadroDeVidaCell">
+                <div id="barraDeVidaCell"></div>
+            </div>
+            </div>
+
+        </body>
+
+        <script type="text/javascript">
+
+            var leftValue = 150;
+            var topValue = 150;
+            var run = 1;
+    
+            function update() {
+                document.getElementById("players").style.left = leftValue + "px";
+                document.getElementById("players").style.top = topValue + "px";
+            }
+    
+            document.onkeydown = function (e) {
+                console.log(e);
+    
+                if (run == 1) {
+                    run = 2;
+                }
+                else if (run == 2) {
+                    run = 1;
+                }
+    
+                if (e.keyCode == 37 && leftValue > 0) {
+                    leftValue = leftValue - 10;
+                    document.getElementById("players").style.left = leftValue + "px";
+                    document.getElementById("players").style.backgroundImage = "url('gokuleft.png')"
+                }
+                else if (e.keyCode == 39 && leftValue < 800) {
+                    leftValue = leftValue + 10;
+                    document.getElementById("players").style.left = leftValue + "px";
+                    document.getElementById("players").style.backgroundImage = "url('gokuright.png')"
+                }
+                else if (e.keyCode == 40 && topValue < 500) {
+                    topValue = topValue + 10;
+                    document.getElementById("players").style.top = topValue + "px";
+                    document.getElementById("players").style.backgroundImage = "url('gokudown.png')"
+                }
+                else if (e.keyCode == 38 && topValue > 0) {
+                    topValue = topValue - 10;
+                    document.getElementById("players").style.top = topValue + "px";
+                    document.getElementById("players").style.backgroundImage = "url('gokuup.png')"
+                }
+    
+                update();
+            }
+        </script>
+            
+    </html>
